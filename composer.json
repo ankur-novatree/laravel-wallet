@@ -14,5 +14,5 @@
         "psr-4": {
             "Novatree\\Wallet\\": "packages/novatree/wallet/src"
         }
-    },
+    }
 }
