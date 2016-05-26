@@ -1,0 +1,13 @@
+{
+    "name": "novatree/wallet",
+    "description": "Wallet management system",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "monojit",
+            "email": "monojithalder@hotmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
