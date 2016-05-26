@@ -1,6 +1,7 @@
 {
     "name": "novatree/wallet",
-    "description": "Wallet management system",
+    "description": "Wallet management system for laravel",
+    "keywords": ["Wallet","laravel"],
     "license": "MIT",
     "authors": [
         {

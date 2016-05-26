@@ -21,7 +21,7 @@ class WalletController extends Controller
     }
 
     /**
-     * This method is used show add account type form
+     * This method is used save account type
      */
     public function saveAccountType(Request $request) {
         try{
@@ -38,6 +38,33 @@ class WalletController extends Controller
         }
         catch(Exception $e){
             return redirect('account-type')->with('error','Some error occurred');
+        }
+    }
+
+    /**
+     * This method is used show add Transaction type form
+     */
+    public function showTransactionTypeForm() {
+        return view('wallet::transaction-type');
+    }
+
+
+    /**
+     * This method is used show add account type form
+     */
+    public function saveTransactionType(Request $request) {
+        try{
+            $code      = $request->code;
+            $status    = $request->status;
+            $account_model = new AccountModel();
+            $account_model->create([
+              'code' => $code,
+              'status' => $status
+            ]);
+            return redirect('transaction-type')->with('success','Transaction type successfully added');
+        }
+        catch(Exception $e){
+            return redirect('transaction-type')->with('error','Some error occurred');
         }
     }
 
