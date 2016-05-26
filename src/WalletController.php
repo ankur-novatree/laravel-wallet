@@ -28,8 +28,8 @@ class WalletController extends Controller
             $type_name = $request->type_name;
             $code      = $request->code;
             $status    = $request->status;
-            $account_model = new AccountModel();
-            $account_model->create([
+            $transaction_model = new TransactionTypeModel();
+            $transaction_model->create([
                 'name' => $type_name,
                 'code' => $code,
                 'status' => $status
@@ -66,6 +66,26 @@ class WalletController extends Controller
         catch(Exception $e){
             return redirect('transaction-type')->with('error','Some error occurred');
         }
+    }
+    
+    /**
+     * This method is used for show view account type
+     */
+    public function showAccountType() {
+        $account_moder = new AccountModel();
+        $data = array();
+        $data = $account_moder->get()->toArray();
+        return view('wallet::view-account-type',compact('data'));
+    }
+
+    /**
+     * This method is used for show view transaction type
+     */
+    public function showTransactionType() {
+        $transaction_model = new TransactionTypeModel();
+        $data = array();
+        $data = $transaction_model->get()->toArray();
+        return view('wallet::view-transaction-type',compact('data'));
     }
 
 }

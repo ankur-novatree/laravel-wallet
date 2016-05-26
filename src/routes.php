@@ -5,3 +5,6 @@ Route::post('account-type/','novatree\wallet\WalletController@saveAccountType');
 
 Route::get('transaction-type/','novatree\wallet\WalletController@showTransactionTypeForm');
 Route::post('transaction-type/','novatree\wallet\WalletController@saveTransactionType');
+
+Route::get('view-transaction-type/','novatree\wallet\WalletController@showTransactionType');
+Route::get('view-account-type/','novatree\wallet\WalletController@showAccountType');
