@@ -24,16 +24,21 @@ class WalletController extends Controller
      * This method is used show add account type form
      */
     public function saveAccountType(Request $request) {
-        $type_name = $request->type_name;
-        $code      = $request->code;
-        $status    = $request->status;
-        $account_model = new AccountModel();
-        $account_model->create([
-            'name' => $type_name,
-            'code' => $code,
-            'status' => $status
-        ]);
-        return redirect('account-type');
+        try{
+            $type_name = $request->type_name;
+            $code      = $request->code;
+            $status    = $request->status;
+            $account_model = new AccountModel();
+            $account_model->create([
+                'name' => $type_name,
+                'code' => $code,
+                'status' => $status
+            ]);
+            return redirect('account-type')->with('success','Account type successfully added');
+        }
+        catch(Exception $e){
+            return redirect('account-type')->with('error','Some error occurred');
+        }
     }
 
 }
