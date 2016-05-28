@@ -13,7 +13,7 @@ class AccountModel extends Model
    *
    * @var array
    */
-  protected $fillable = ['id','user_id','amount','account_type','transaction_type'];
+  protected $fillable = ['id','user_id','amount','account_type','transaction_type','transaction_date'];
 
   protected $connection = 'mysql';
 }

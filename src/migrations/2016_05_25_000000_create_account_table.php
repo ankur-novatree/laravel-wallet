@@ -18,6 +18,7 @@ class CreateAccountTable extends Migration
             $table->decimal('amount',10,2);
             $table->string('account_type');
             $table->string('transaction_type');
+            $table->dateTime('transaction_date');
         });
     }
 
