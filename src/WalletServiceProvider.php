@@ -3,6 +3,7 @@
 namespace Novatree\Wallet;
 
 use Illuminate\Support\ServiceProvider;
+use App;
 
 class WalletServiceProvider extends ServiceProvider
 {
@@ -31,5 +32,9 @@ class WalletServiceProvider extends ServiceProvider
     {
         include __DIR__.'/routes.php';
         $this->app->make('Novatree\Wallet\WalletController');
+        App::bind('walletapi', function()
+        {
+            return new \Novatree\Wallet\WalletApi;
+        });
     }
 }
