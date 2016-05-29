@@ -9,6 +9,8 @@
 namespace Novatree\Wallet;
 use Mockery\CountValidator\Exception;
 use Novatree\Wallet\AccountModel;
+use Novatree\Wallet\AccountTypeModel;
+use Novatree\Wallet\TransactionTypeModel;
 
 class WalletApi {
 
@@ -74,6 +76,48 @@ class WalletApi {
     catch(Exception $e) {
       $return_string = json_encode(array('failure'));
       return $return_string;
+    }
+  }
+
+  /**
+   * @param $name
+   * @param $code
+   * @param $status
+   * @return array
+   * This method is used for create account type
+   */
+  public function CreateAccountType($name,$code,$status) {
+    try {
+      $account_model = new AccountModel();
+      $account_model->create([
+        'name' => $name,
+        'code' => $code,
+        'status' => $status
+      ]);
+      return array('success');
+    }
+    catch(Exception $e) {
+      return array('error');
+    }
+  }
+
+  /**
+   * @param $code
+   * @param $status
+   * @return array
+   * This method is used for create transaction type
+   */
+  public function CreateTransactionType($code,$status) {
+    try {
+      $transaction_model = new TransactionTypeModel();
+      $transaction_model->create([
+        'code' => $code,
+        'status' => $status
+      ]);
+      return array('success');
+    }
+    catch(Exception $e) {
+      return array('error');
     }
   }
 

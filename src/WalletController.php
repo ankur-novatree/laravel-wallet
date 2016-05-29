@@ -28,8 +28,8 @@ class WalletController extends Controller
             $type_name = $request->type_name;
             $code      = $request->code;
             $status    = $request->status;
-            $transaction_model = new TransactionTypeModel();
-            $transaction_model->create([
+            $account_model = new AccountModel();
+            $account_model->create([
                 'name' => $type_name,
                 'code' => $code,
                 'status' => $status
@@ -56,8 +56,8 @@ class WalletController extends Controller
         try{
             $code      = $request->code;
             $status    = $request->status;
-            $account_model = new AccountModel();
-            $account_model->create([
+            $transaction_model = new TransactionTypeModel();
+            $transaction_model->create([
               'code' => $code,
               'status' => $status
             ]);
