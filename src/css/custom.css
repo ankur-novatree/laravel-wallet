@@ -1,0 +1,636 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #757b87;
+    font-size: 14px;
+}
+/* ---------- Navbar text link Css Start ---------- */
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: #fff;
+    text-decoration: none;
+}
+/* ---------- //Navbar text link Css End ---------- */
+/* --------- Icon Section Css Start ---------- */
+
+#icon_section ul li>a {
+    color: #787878;
+    font-size: 15px;
+}
+/* --------- //Icon Section Css End ---------- */
+
+.pad_top10 {
+    padding-top: 10px;
+    float: right;
+}
+/* ---------- Navbar Section Css Start ---------- */
+
+.navbar-brand {
+    margin-bottom: 6%;
+}
+
+.navbar-toggle {
+    background-color: #5D9CEC;
+    padding: 10px;
+    border-color: #f2f2f2;
+    font-size: 16px;
+}
+
+.navbar-brand {
+    height: 30px;
+    padding: 6px 10px;
+}
+
+ul {
+    list-style-type: none;
+}
+/* ---------- Navbar Right Css Start ---------- */
+
+.navbar-right {
+    margin-right: 30px;
+    margin-top: 0.2999%;
+}
+/* ---------- //Navbar Right Css End ---------- */
+
+.navbar-nav li>a:focus,
+.navbar-nav li>a:hover {
+    background-color: #337ab7;
+    color: #fff;
+}
+
+.navbar-nav li.active{
+    background-color: #337AB7;
+}
+
+.navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 9px;
+}
+/* ---------- Navbar dropdown Css Start ---------- */
+
+.navbar-nav .dropdown-menu a:hover {
+    border-left: 2px solid #ef6f6c;
+    color: #fff;
+    background-color: #337ab7;
+}
+/* ---------- //Navbar dropdown Css End ---------- */
+/* ---------- Navbar a hover Css Start ---------- */
+
+.navbar-nav >.open >a:hover,
+.navbar-nav >.open >a {
+    background-color: #337ab7;
+    color: #fff;
+}
+/* ---------- //Navbar a hover Css End ---------- */
+
+.navbar-nav .dropdown-menu>li {
+    background-color: #fff;
+}
+
+.navbar-nav .dropdown-menu li:hover {
+    border: none;
+}
+
+.nav .open>a,
+.nav .open>a:focus,
+.nav .open>a:hover {
+    background-color: #337ab7;
+    color: #fff;
+}
+
+.navbar {
+    margin-bottom: 0px;
+    background-color: #5D9CEC;
+    border-radius: 0px;
+}
+/* ---------- //Navbar Section Css End ---------- */
+
+li label {
+    position: relative;
+    bottom: 5px;
+    color: #757b87;
+    font-weight: lighter;
+}
+
+label {
+    color: #757b87;
+    font-weight: lighter;
+    padding: 10px 5px;
+}
+
+.welcome {
+    margin: 30px 0px 0px 0px;
+    text-align: center;
+    color: #128bc6;
+    border-bottom: 1px solid #128bc6;
+}
+
+.box h3 {
+    text-align: center;
+}
+/* ---------- Default text link hover Css Start ---------- */
+
+.primary,
+.primary>a,
+.primary>a:visited,
+.primary>a:hover,
+.primary>a:active {
+    color: #128bc6;
+    text-decoration: none;
+}
+
+.danger,
+.danger>a,
+.danger>a:visited,
+.danger>a:hover,
+.danger>a:active {
+    color: #ef6f6c;
+    text-decoration: none;
+}
+
+.success,
+.success>a,
+.success>a:visited,
+.success>a:hover,
+.success>a:active {
+    color: #09bd8f;
+    text-decoration: none;
+}
+
+.warning,
+.warning>a,
+.warning>a:visited,
+.warning>a:hover,
+.warning>a:active {
+    color: #FE7F37;
+    text-decoration: none;
+}
+
+.yellow,
+.yellow>a,
+.yellow>a:visited,
+.yellow>a:hover,
+.yellow>a:active {
+    color: #FFD43C;
+    text-decoration: none;
+}
+/* ---------- //Default text link hoverCss End ---------- */
+.mrg_lft12{
+   margin-left: 12px;
+}
+.box {
+    border-radius: 3px;
+    background-color: #fdfdfd;
+    padding: 10px 15px;
+    text-align: right;
+    display: block;
+    margin-top: 60px;
+    margin-bottom: 15px;
+}
+
+.info > p {
+    color: #717171;
+    padding-top: 10px;
+    text-align: justify;
+    letter-spacing: 0px;
+    word-spacing: -3px;
+}
+/* ---------- Custom Bg color ---------- */
+
+.bg-success {
+    background-color: #09bd8f;
+    color: #fff;
+}
+
+.bg-primary {
+    background-color: #128bc6;
+    color: #fff;
+    padding: 16px 0px;
+}
+/* ---------- //Custom Bg color End ---------- */
+/* ---------- Custom text Color Css ---------- */
+
+.text-success {
+    color: #09bd8f;
+    background: none;
+}
+
+.text-primary {
+    color: #128bc6;
+    background: none;
+}
+
+.text-danger {
+    color: #ef6f6c;
+    background: none;
+}
+
+.text-dark {
+    color: #787878;
+    background: none;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.text-black {
+    color: #000;
+}
+
+.text-warning {
+    color: #fe7f37;
+    background: none;
+}
+/* ---------- //Custom text Color Css End---------- */
+/* ---------- Recent Work Section Start ---------- */
+.rcnt-wrk{
+        padding-left: 4px;
+    }
+ /* ---------- //Recent Work Section End ---------- */   
+/* ---------- Text-box bg Section Css Start ---------- */
+
+.text-box-bg {
+    background-color: #09bd8f;
+    text-align: center;
+}
+/* ---------- //Text-box bg Section Css End ---------- */
+/* ---------- Services Text section Css Start --------- */
+
+.services h3, .services h2 {
+    border-bottom: 1px solid #787878;
+    text-align: center
+}
+
+.border-bottom {
+    border-bottom: 1px solid #fe7f37;
+    margin-bottom: -1px;
+}
+/* ---------- //Services Text section Css End --------- */
+/* ----------  Purchase Section Start ---------- */
+
+.left_text_box {
+    background-color: #09bd8f;
+    text-align: center;
+    color: #fff;
+    padding: 10px 0px 15px 0px;
+}
+
+.left_text_box .btn-primary {
+    margin-top: 5px;
+    font-size: 25px;
+}
+/* ----------  //Purchase Section End ---------- */
+/* ---------- Features Section Start ---------- */
+
+.light-bg {
+    background-color: #f7f7f7;
+}
+
+.c1_image {
+    padding-top: 5%;
+    margin-bottom: 3%;
+}
+.input-group-addon {
+    padding: 5px 12px !important;
+}
+.input-group-addon,.form-group, .form-control, .input-group,.input-group-btn,.input-group .form-control{
+    border-radius: 0 !important;
+}
+
+.lorem_heading {
+    padding-top: 5%;
+}
+
+.button {
+    float: right;
+    margin: 2% 0;
+}
+/* ---------- //Features Section End ---------- */
+/* ---------- Our Team Css Start ---------- */
+
+.about-headings {
+    text-align: center;
+    color: #fff;
+}
+.about-headings h5{
+    color: #fff;
+}
+.team-bg {
+    background: url("../../images/team-bg-5.jpg") no-repeat;
+    height: auto;
+    padding: 15px 0px;
+}
+.team {
+    text-align: center;
+    margin-top: 3%;
+    color: #fff;
+}
+
+.team h4 {
+    color: #fff;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.team h5 {
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.team p {
+    text-align: justify;
+}
+/* ---------- //Our Team Css End ---------- */
+
+.mrg_lft12 {
+    margin-left: 12px;
+}
+.marg-btm10{
+    margin-bottom: 10px;
+}
+/* ---------- Testimonial section Start ---------- */
+
+.testimonial,
+.testimonial1 {
+    background-color: #f2f2f2;
+    margin-top: 2%;
+    padding: 5%;
+    border-radius: 10px;
+    color: #787878;
+}
+
+.test_image_left {
+    border-radius: 50%;
+    margin-top: 3%;
+}
+
+p {
+    text-align: justify;
+}
+
+.testimonial1:after,
+.testimonial:after {
+    content: " ";
+    display: block;
+    position: relative;
+    top: 48px;
+    width: 0;
+    height: 0;
+    border-left: 0 inset rgba(255, 255, 255, 0);
+    border-right: 25px inset rgba(255, 255, 255, 0);
+    border-top: 22px solid #f2f2f2;
+}
+
+.testimonial1:after {
+    left: 90%;
+}
+
+.testimonial:after {
+    left: 10%;
+}
+
+.test_image_right {
+    border-radius: 50%;
+    margin-top: 3%;
+    margin-right: 9%;
+}
+/* ---------- //Testimonial section End ---------- */
+/* ---------- Footer Section Start ---------- */
+.seperator {
+    background-color: #4c5566;
+    padding: 0.5px 0px;
+}
+
+.icons {
+    font-size: 17px;
+    color: #787878;
+    float: right;
+    margin-top: 5px;
+}
+
+.icons>li {
+    padding: 0px 5px;
+}
+
+.fa-bars {
+    color: #000;
+}
+
+.media-heading {
+    padding-top: 7.3%;
+    padding-left: 1%;
+}
+
+.media-right {
+    float: right;
+    padding-right: 10%;
+}
+
+.profile-right-text {
+    padding-right: 5%;
+    text-align: right;
+}
+
+.profile-right-img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    float: right;
+}
+
+footer {
+    background-color: #262626;
+    padding: 20px 0px;
+}
+
+footer h3 {
+    color: #eff2f7;
+    text-transform: uppercase;
+    font-size: 21px;
+}
+
+footer p {
+    color: #ababab;
+    line-height: 1.7em;
+}
+/* ---------- Recent post Section Start ---------- */
+
+.recen-post ul li {
+    margin-bottom: 15px;
+}
+
+.recen-post ul li:first-child {
+    border-top: none;
+}
+
+.recen-post ul li:last-child {
+    border-bottom: none;
+}
+
+.fotr-post {
+    color: #ababab;
+    line-height: 1.7em;
+}
+
+.ftr-image-small {
+    float: left;
+    margin-top: 5px;
+    margin-right: 10px;
+    border: 2px solid #3f454c;
+}
+/* ---------- //Recent post Section End ---------- */
+/* ---------- Subscribe Section Start ---------- */
+
+.ftr-form .form-control {
+    background-color: #fff;
+    border: 1px solid #303030;
+}
+
+.footer,
+.subscribe,
+.form-control {
+    border-radius: 5px !important;
+}
+
+.ftr-form .btn {
+    margin-top: 1%;
+}
+/* ---------- //Subscribe Section End ---------- */
+/* ---------- // Footer section End ---------- */
+/* ---------- Footer Copy right Section Start ---------- */
+
+.copyright {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.copyright p,
+.copy ul {
+    margin-top: 10px;
+}
+
+.copyright ul a {
+    color: #757b87;
+}
+/* ---------- //Copy right Section End ---------- */
+/* ---------- Back to top Section Icon Css ---------- */
+
+.back-to-top {
+   cursor: pointer;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none;
+   border-radius: 25%;
+   padding: 15px;
+    border: none;
+    font-size: 25px;
+    opacity: 0.7;
+    width: 50px;
+    height: 50px;
+}
+
+.back-to-top:hover {
+    opacity: 1;
+}
+
+/*----------- //recentworks hover effects--------*/
+.ih-item.square {
+  width: auto !important;
+  height: auto !important;
+  border: none !important;
+  float:left;
+}
+
+/* ---------- //Back to top Section Icon Css End---------- */
+/* ---------- Testimonial media Section Start ---------- */
+
+@media(max-width: 1200px) {
+    .testimonial:after {
+        bottom: -35px;
+        left: 9%;
+    }
+    .testimonial1:after {
+        bottom: -35px;
+        left: 9%;
+    }
+    .navbar-right {
+        margin-right: 0px;
+    }
+    .media-right {
+        float: left;
+    }
+    .profile-right-text {
+        float: left;
+    }
+}
+
+@media(max-width: 750px) {
+    .testimonial:after {
+        top: 40%;
+        left: 33%;
+        border-top: 30px solid #f2f2f2;
+    }
+    .testimonial1:after {
+        top: 35px;
+        left: 35%;
+        border-top: 30px solid #f2f2f2;
+    }
+    .test_image_right {
+        margin-top: 3%;
+        float: left;
+    }
+    .media-right {
+        float: left;
+    }
+    .profile-right-text {
+        float: right;
+    }
+    .rcnt-wrk{
+        padding-left: 1%;
+    }
+}
+/* ---------- //Testimonial media Section End ---------- */
+
+@media(max-width:990px) {
+    p {
+        text-align: left;
+    }
+    .testimonial:after {
+        top: 37px;
+        left: 33%;
+        border-top: 30px solid #f2f2f2;
+    }
+    .testimonial1:after {
+        top: 37px;
+        left: 35%;
+        border-top: 30px solid #f2f2f2;
+    }
+    .rcnt-wrk{
+        padding-left: 10%;
+    }
+}
+
+.skin_btn {display:inline-table; cursor:pointer; width:30px; height:30px; margin-bottom: 1px;}
+.skin_size { width:30px; height:30px; margin:3px;}
+.well{padding:10px;}
+.primary_skin {background-color:#5D9CEC;}
+.danger_skin{background-color: #C0392B;}
+.success_skin{background-color: #01bc8c;}
+.warning_skin{background-color: #F4D03F;}
+.purple_skin{background-color: #D2527F;}
+.turquoise_skin{background-color: #E87E04;}
+.asbestos_skin{background-color: #BDC3C7;}
+.hoki_skin{background-color: #795548;}
+
+/*guest logout css*/
+
+#guest-logout a
+{
+    color: inherit;
+    text-decoration: none;
+}
