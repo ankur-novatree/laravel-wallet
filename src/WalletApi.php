@@ -88,8 +88,8 @@ class WalletApi {
    */
   public function CreateAccountType($name,$code,$status) {
     try {
-      $account_model = new AccountModel();
-      $account_model->create([
+      $account_type_model = new AccountTypeModel();
+        $account_type_model->create([
         'name' => $name,
         'code' => $code,
         'status' => $status

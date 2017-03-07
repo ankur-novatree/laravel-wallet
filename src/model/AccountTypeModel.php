@@ -21,4 +21,5 @@ class AccountTypeModel extends Model
   protected $fillable = ['id', 'name','code','status'];
 
   protected $connection = 'mysql';
+  public $timestamps = false;
 }

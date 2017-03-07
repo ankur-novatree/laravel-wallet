@@ -16,4 +16,5 @@ class AccountModel extends Model
   protected $fillable = ['id','user_id','amount','account_type','transaction_type','transaction_date'];
 
   protected $connection = 'mysql';
+  public $timestamps = false;
 }

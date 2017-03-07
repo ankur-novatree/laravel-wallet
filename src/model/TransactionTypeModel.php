@@ -16,4 +16,5 @@ class TransactionTypeModel extends Model
   protected $fillable = ['id','code','status'];
 
   protected $connection = 'mysql';
+  public $timestamps = false;
 }
