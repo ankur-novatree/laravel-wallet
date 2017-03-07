@@ -14,14 +14,15 @@ class WalletServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
+       /* $this->publishes([
           __DIR__.'/views' => base_path('resources/views/novatree/wallet'),
         ]);
         $this->publishes([
           __DIR__.'/migrations' => base_path('database/migrations'),
-        ]);
+        ]);*/
         $this->publishes([
-          __DIR__.'/css' => base_path('public/assets/css/wallet'),
+         /* __DIR__.'/css' => base_path('public/assets/css/wallet'),*/
+          __DIR__.'/migrations' => base_path('database/migrations'),
         ]);
         $this->loadViewsFrom(__DIR__.'/views', 'wallet');
     }
