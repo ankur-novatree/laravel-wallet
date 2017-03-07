@@ -8,3 +8,5 @@ Route::post('transaction-type/','novatree\wallet\WalletController@saveTransactio
 
 Route::get('view-transaction-type/','novatree\wallet\WalletController@showTransactionType');
 Route::get('view-account-type/','novatree\wallet\WalletController@showAccountType');
+
+Route::get('view-transaction/{transaction_id?}/{user_id?}','novatree\wallet\WalletController@showTransaction');

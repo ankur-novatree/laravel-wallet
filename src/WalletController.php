@@ -72,9 +72,9 @@ class WalletController extends Controller
      * This method is used for show view account type
      */
     public function showAccountType() {
-        $account_moder = new AccountModel();
+        $account_type_model = new AccountTypeModel();
         $data = array();
-        $data = $account_moder->get()->toArray();
+        $data = $account_type_model->get()->toArray();
         return view('wallet::view-account-type',compact('data'));
     }
 
@@ -86,6 +86,23 @@ class WalletController extends Controller
         $data = array();
         $data = $transaction_model->get()->toArray();
         return view('wallet::view-transaction-type',compact('data'));
+    }
+
+    /**
+     * This method is used for show transaction by id or all
+     */
+    public function showTransaction($transaction_id = 0,$user_id = 0) {
+        $account_model = new AccountModel();
+        $transaction = $account_model->where(function ($query) use ($transaction_id) {
+            if($transaction_id !=0 || $transaction_id != '') {
+                return $query->where('id','=',$transaction_id);
+            }
+        })->where(function ($query) use ($user_id) {
+            if($user_id != 0 || $user_id != '') {
+                return $query->where('user_id','=',$user_id);
+            }
+        })->get()->toArray();
+        return view('wallet::view-transaction',compact('transaction'));
     }
 
 }
