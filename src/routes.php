@@ -10,3 +10,6 @@ Route::get('view-transaction-type/','novatree\wallet\WalletController@showTransa
 Route::get('view-account-type/','novatree\wallet\WalletController@showAccountType');
 
 Route::get('view-transaction/{transaction_id?}/{user_id?}','novatree\wallet\WalletController@showTransaction');
+
+Route::get('admin/login','novatree\wallet\WalletAuthController@login');
+Route::post('admin/login','novatree\wallet\WalletAuthController@doLogin');
