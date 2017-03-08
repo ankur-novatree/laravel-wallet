@@ -31,11 +31,7 @@ class WalletServiceProvider extends ServiceProvider
           __DIR__.'/migrations' => base_path('database/migrations'),
         ]);
         $this->loadViewsFrom(__DIR__.'/views', 'wallet');
-       /* $this->app->middleware([
-            Novatree\Wallet\Middleware\WalletMiddleware::class,
-        ]);*/
         parent::boot($router);
-
         foreach($this->middleware as $name => $class) {
             $router->middleware($name, $class);
         }
@@ -52,7 +48,6 @@ class WalletServiceProvider extends ServiceProvider
         include __DIR__.'/routes.php';
         $this->app->make('Novatree\Wallet\WalletController');
         $this->app->make('Novatree\Wallet\WalletAuthController');
-        //$this->app->register(Novatree\Wallet\Middleware\WalletMiddleware::class);
         App::bind('walletapi', function()
         {
             return new \Novatree\Wallet\WalletApi;

@@ -11,7 +11,7 @@ use Novatree\Wallet\AccountTypeModel;
 use Novatree\Wallet\TransactionTypeModel;
 use Novatree\Wallet\AdminLogin;
 use Session;
-
+use Illuminate\Support\Facades\Redirect;
 
 class WalletAuthController extends Controller
 {
@@ -32,7 +32,14 @@ class WalletAuthController extends Controller
             if(password_verify($request->password,$admin_details[0]['password'])) {
                 Session::put('admin_login',TRUE);
                 Session::put('admin_user_id',$admin_details[0]['id']);
+                return redirect('admin/dashboard');
             }
+            else {
+                return redirect('admin/login');
+            }
+        }
+        else {
+            return redirect('admin/login');
         }
     }
     

@@ -4,4 +4,5 @@
     <label>Password</label>
     <input type="password" name="password">
     <input type="submit" value="Login">
+    {{ csrf_field() }}
 </form>
