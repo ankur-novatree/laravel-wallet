@@ -13,3 +13,5 @@ Route::get('view-transaction/{transaction_id?}/{user_id?}','novatree\wallet\Wall
 
 Route::get('admin/login','novatree\wallet\WalletAuthController@login');
 Route::post('admin/login','novatree\wallet\WalletAuthController@doLogin');
+
+Route::get('admin/dashboard',['middleware' => 'WalletMiddleware','uses' => 'novatree\wallet\WalletAuthController@dashboard']);
