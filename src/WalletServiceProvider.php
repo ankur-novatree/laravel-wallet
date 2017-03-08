@@ -27,7 +27,7 @@ class WalletServiceProvider extends ServiceProvider
           __DIR__.'/migrations' => base_path('database/migrations'),
         ]);*/
         $this->publishes([
-         /* __DIR__.'/css' => base_path('public/assets/css/wallet'),*/
+          __DIR__.'/assets' => base_path('public/assets/wallet'),
           __DIR__.'/migrations' => base_path('database/migrations'),
         ]);
         $this->loadViewsFrom(__DIR__.'/views', 'wallet');
