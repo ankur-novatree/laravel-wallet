@@ -49,5 +49,29 @@ class WalletAuthController extends Controller
     public function dashboard() {
         echo "This is Dashboard";
     }
+    
+    /**
+     * This method is used for logout
+     */
+    public function logot()
+    {
+        
+    }
+    
+    /**
+     * This method is used for show form of change admin password
+     */
+    public function changePassword()
+    {
+        
+    }
+    
+    /**
+     * This method is used for change admin password
+     */
+    public function doChangePassword()
+    {
+        
+    }
 
 }
