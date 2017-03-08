@@ -3,6 +3,7 @@
 namespace Novatree\Wallet;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Routing\Router;
 use App;
 
 
@@ -13,7 +14,11 @@ class WalletServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    protected $middleware = [
+        'WalletMiddleware' => 'Novatree\Wallet\Middleware\WalletMiddleware'
+    ];
+
+    public function boot(Router $router)
     {
        /* $this->publishes([
           __DIR__.'/views' => base_path('resources/views/novatree/wallet'),
@@ -29,6 +34,11 @@ class WalletServiceProvider extends ServiceProvider
        /* $this->app->middleware([
             Novatree\Wallet\Middleware\WalletMiddleware::class,
         ]);*/
+        parent::boot($router);
+
+        foreach($this->middleware as $name => $class) {
+            $router->middleware($name, $class);
+        }
 
     }
 
