@@ -16,7 +16,6 @@ class CreateAdminLogin extends Migration
             $table->increments('id');
             $table->string('username',55);
             $table->string('password',255);
-            $table->primary('username');
             $table->timestamps();
         });
     }

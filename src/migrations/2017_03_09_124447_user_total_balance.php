@@ -12,12 +12,11 @@ class UserTotalBalance extends Migration
      */
     public function up()
     {
-        Schema::table('user_total_balance', function (Blueprint $table) {
+        Schema::create('user_total_balance', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->decimal('total_balance',10,2);
             $table->date('modify_date');
-            $table->primary('id');
         });
     }
 
@@ -28,8 +27,6 @@ class UserTotalBalance extends Migration
      */
     public function down()
     {
-        Schema::table('user_total_balance', function (Blueprint $table) {
-            //
-        });
+        Schema::drop('user_total_balance');
     }
 }

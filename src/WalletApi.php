@@ -11,6 +11,7 @@ use Mockery\CountValidator\Exception;
 use Novatree\Wallet\AccountModel;
 use Novatree\Wallet\AccountTypeModel;
 use Novatree\Wallet\TransactionTypeModel;
+use Novatree\Wallet\UserTotalBalance;
 
 class WalletApi {
 
@@ -27,6 +28,7 @@ class WalletApi {
         'transaction_type' => $transaction_type,
         'transaction_date' => $date
       ]);
+      $this->updateUserTotalBalance($user_id,$amount);
       return array('success');
     }
     catch(Exception $e) {
@@ -120,5 +122,38 @@ class WalletApi {
       return array('error');
     }
   }
+
+  /**
+   * This method is used for update user total balance
+   */
+    public function updateUserTotalBalance($user_id,$amount) {
+        $user_total_balance_model = new UserTotalBalance();
+        $user_total = $user_total_balance_model->find($user_id);
+        if(!empty($user_total)) {
+            $user_total->total_balance += $amount;
+            $user_total->save();
+        }
+        else {
+            $user_total_balance_model->create([
+                'user_id'       => $user_id,
+                'total_balance' => $amount,
+                'modify_date'   => date('Y-m-d H:i:s'),
+            ]);
+        }
+
+    }
+
+    /**
+     * This method is used for fetch user wise balance by user Id
+     */
+    public function fetchUserBalance($user_id) {
+        $user_total_balance_model = new UserTotalBalance();
+        $user_total = $user_total_balance_model->where('user_id','=',$user_id)->get()->toArray();
+        $balance = 0;
+        if(!empty($user_total)) {
+            $balance = $user_total[0]['total_balance'];
+        }
+        return $balance;
+    }
 
 }
