@@ -1,22 +1,26 @@
 <?php
-Route::get('admin/account-type/{id?}',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@showAccountTypeForm']);
-Route::post('admin/account-type/',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@saveAccountType']);
 
-Route::get('admin/transaction-type/{id?}',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@showTransactionTypeForm']);
-Route::post('admin/transaction-type/',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@saveTransactionType']);
+Route::group(['prefix' => 'admin'], function () {
 
-Route::get('admin/view-transaction-type/',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@showTransactionType']);
-Route::get('admin/view-account-type/',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@showAccountType']);
+    Route::get('account-type/{id?}',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@showAccountTypeForm']);
+    Route::post('account-type/',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@saveAccountType']);
 
-Route::get('admin/view-transaction/{transaction_id?}/{user_id?}',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@showTransaction']);
+    Route::get('transaction-type/{id?}',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@showTransactionTypeForm']);
+    Route::post('transaction-type/',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@saveTransactionType']);
 
-Route::get('admin/login','novatree\wallet\WalletAuthController@login');
-Route::post('admin/login','novatree\wallet\WalletAuthController@doLogin');
+    Route::get('view-transaction-type/',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@showTransactionType']);
+    Route::get('view-account-type/',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@showAccountType']);
 
-Route::get('admin/dashboard',['middleware' => 'WalletMiddleware','uses' => 'novatree\wallet\WalletAuthController@dashboard']);
-Route::get('admin/logout','novatree\wallet\WalletAuthController@logout');
+    Route::get('view-transaction/{transaction_id?}/{user_id?}',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@showTransaction']);
 
-Route::get('admin/change-password',['middleware' => 'WalletMiddleware','uses' => 'novatree\wallet\WalletAuthController@changePassword']);
-Route::post('admin/change-password',['middleware' => 'WalletMiddleware','uses' => 'novatree\wallet\WalletAuthController@doChangePassword']);
+    Route::get('login','novatree\wallet\WalletAuthController@login');
+    Route::post('login','novatree\wallet\WalletAuthController@doLogin');
 
+    Route::get('dashboard',['middleware' => 'WalletMiddleware','uses' => 'novatree\wallet\WalletAuthController@dashboard']);
+    Route::get('logout','novatree\wallet\WalletAuthController@logout');
+
+    Route::get('change-password',['middleware' => 'WalletMiddleware','uses' => 'novatree\wallet\WalletAuthController@changePassword']);
+    Route::post('change-password',['middleware' => 'WalletMiddleware','uses' => 'novatree\wallet\WalletAuthController@doChangePassword']);
+
+});
 
