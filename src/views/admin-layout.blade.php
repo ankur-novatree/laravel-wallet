@@ -115,6 +115,18 @@
 @endif
 <div class="lg-layout-padding--section is-first">
     <div class="lg-layout-container lg-layout-container--box">
+        @if (session('error'))
+            <div class="alert alert-danger m-t-1 font-pref fade in" id="alert">
+                <a href="#alert" class="close" data-dismiss="alert" aria-label="close">×</a>
+                {{ session('error') }}
+            </div>
+        @endif
+        @if (session('success'))
+                <div class="alert alert-success m-t-1 font-pref fade in" id="alert">
+                    <a href="#alert" class="close" data-dismiss="alert" aria-label="close">×</a>
+                    {{ session('success') }}
+                </div>
+        @endif
         @yield('content')
     </div>
 </div>
@@ -128,6 +140,7 @@
 <script type="text/javascript" src="{{ asset('assets/wallet/js/input.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/wallet/js/menu-bar.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/wallet/js/radio.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/wallet/js/alert.js') }}"></script>
 
 </body>
 </html>

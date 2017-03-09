@@ -7879,3 +7879,72 @@ ul.lg-navigation.is-narrow li span::after {
 .drupal-navigation > ul.lg-navigation > li:hover > span::after {
   color: rgba(0, 0, 0, 0.54) !important;
 }
+
+.alert {
+  padding: 15px;
+  border: 1px solid transparent;
+  border-radius: 0;
+  color: #FFF;
+  position: relative;
+  margin: 16px;
+}
+.alert > p,
+.alert > ul {
+  margin-bottom: 0; }
+.alert > p + p {
+  margin-top: 5px; }
+
+.alert-heading {
+  color: inherit; }
+
+.alert-link {
+  font-weight: bold; }
+
+.alert-dismissible {
+  padding-right: 35px; }
+.alert-dismissible .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  color: inherit; }
+
+.alert-success {
+  background-color: #4caf50 ; }
+.alert-success .alert-link {
+  color: #2b542c ; }
+
+.alert-info {
+  background-color: #03a9f4 ;
+}
+.alert-info .alert-link {
+  color: #245269 ; }
+
+.alert-warning {
+  background-color: #ff5722 ;
+}
+.alert-warning .alert-link {
+  color: #66512c ; }
+
+.alert-danger {
+  background-color: #f44336 ;
+}
+.alert-danger .alert-link {
+  color: #843534 ; }
+
+.fade.in{opacity:1}
+
+.fade {
+  opacity: 0;
+  transition: opacity .25s linear;
+}
+
+.alert .close{
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  font-size: 24px;
+  line-height: 48px;
+  width: 48px;
+  text-align: center;
+}
