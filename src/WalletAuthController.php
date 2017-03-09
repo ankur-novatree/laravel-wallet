@@ -12,6 +12,7 @@ use Novatree\Wallet\TransactionTypeModel;
 use Novatree\Wallet\AdminLogin;
 use Session;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Hash;
 
 class WalletAuthController extends Controller
 {
@@ -69,15 +70,34 @@ class WalletAuthController extends Controller
      */
     public function changePassword()
     {
-        
+        return view('wallet::change-password');
     }
     
     /**
      * This method is used for change admin password
      */
-    public function doChangePassword()
+    public function doChangePassword(Request $request)
     {
-        
+        $admin_login_model = new AdminLogin();
+        $admin_details = $admin_login_model->where('id','=',Session::get('admin_user_id'))->get()->toArray();
+        if($request->new_password != $request->confirm_password) {
+            return redirect('admin/change-password')->with('error','New password and confirm password are not matched');
+        }
+        if(!empty($admin_details)) {
+            if(password_verify($request->old_password,$admin_details[0]['password'])) {
+                $new_password = Hash::make($request->new_password);
+                $admin_details_save = $admin_login_model->find(Session::get('admin_user_id'));
+                $admin_details_save->password = $new_password;
+                $admin_details_save->save();
+                return redirect('admin/dashboard')->with('success','Password successfully changed');
+            }
+            else {
+                return redirect('admin/change-password')->with('error','Old password is not matched');
+            }
+        }
+        else {
+            return redirect('admin/login');
+        }
     }
 
 }

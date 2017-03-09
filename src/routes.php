@@ -15,3 +15,8 @@ Route::post('admin/login','novatree\wallet\WalletAuthController@doLogin');
 
 Route::get('admin/dashboard',['middleware' => 'WalletMiddleware','uses' => 'novatree\wallet\WalletAuthController@dashboard']);
 Route::get('admin/logout','novatree\wallet\WalletAuthController@logout');
+
+Route::get('admin/change-password',['middleware' => 'WalletMiddleware','uses' => 'novatree\wallet\WalletAuthController@changePassword']);
+Route::post('admin/change-password',['middleware' => 'WalletMiddleware','uses' => 'novatree\wallet\WalletAuthController@doChangePassword']);
+
+

@@ -39,7 +39,7 @@
 <div id="menu-2" class="lg-menu__container has-offset" data-width="3">
     <div class="lg-menu">
         <div class="lg-menu__item">
-            <a class="lg-button" href="buttons">
+            <a class="lg-button" href="{{ URL::to('admin/change-password') }}">
                 Change Password
             </a>
         </div>
