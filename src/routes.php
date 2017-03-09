@@ -22,5 +22,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('change-password',['middleware' => 'WalletMiddleware','uses' => 'novatree\wallet\WalletAuthController@changePassword']);
     Route::post('change-password',['middleware' => 'WalletMiddleware','uses' => 'novatree\wallet\WalletAuthController@doChangePassword']);
 
+    Route::get('rebuild-user-total/{user_id?}','novatree\wallet\WalletController@rebuildUserTotalBalance');
+
 });
 

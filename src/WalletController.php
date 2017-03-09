@@ -10,6 +10,7 @@ use Novatree\Wallet\AccountModel;
 use Novatree\Wallet\AccountTypeModel;
 use Novatree\Wallet\TransactionTypeModel;
 use Session;
+use Novatree\Wallet\UserTotalBalance;
 
 class WalletController extends Controller
 {
@@ -150,6 +151,20 @@ class WalletController extends Controller
             }
         })->get()->toArray();
         return view('wallet::view-transaction',compact('transaction'));
+    }
+
+    /**
+     * This method is used for rebuild user total balance
+     */
+    public function rebuildUserTotalBalance($user_id = 0) {
+        $user_total_balance_model = new UserTotalBalance();
+        $account_moddel = new AccountModel();
+
+        $total_balance = $account_moddel->where(function ($query) use ($user_id){
+            if($user_id != 0) {
+                $query->where('user_id','=',$user_id);
+            }
+        })->groupBy('user_id')->sum('amount');
     }
 
 }
