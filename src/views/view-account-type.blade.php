@@ -9,6 +9,7 @@
         <th>Account Type Name</th>
         <th>Account Type Machine Name</th>
         <th>Status</th>
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -18,6 +19,7 @@
             <td>{{ $value['name'] }}</td>
             <td>{{ $value['code'] }}</td>
             <td>{{ $value['status'] }}</td>
+            <td><a href="{{ URL::to('admin/account-type',$value['id']) }}">Edit</a></td>
         </tr>
     @endforeach
     </tbody>

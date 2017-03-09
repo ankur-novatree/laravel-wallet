@@ -8,6 +8,7 @@
                     <th>Id</th>
                     <th>Transaction Type Name</th>
                     <th>Status</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -16,6 +17,7 @@
                         <td>{{ $value['id'] }}</td>
                         <td>{{ $value['code'] }}</td>
                         <td>{{ $value['status'] }}</td>
+                        <td><a href="{{ URL::to('admin/transaction-type',$value['id']) }}">Edit</a></td>
                     </tr>
                 @endforeach
                 </tbody>

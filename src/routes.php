@@ -1,8 +1,8 @@
 <?php
-Route::get('admin/account-type/',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@showAccountTypeForm']);
+Route::get('admin/account-type/{id?}',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@showAccountTypeForm']);
 Route::post('admin/account-type/',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@saveAccountType']);
 
-Route::get('admin/transaction-type/',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@showTransactionTypeForm']);
+Route::get('admin/transaction-type/{id?}',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@showTransactionTypeForm']);
 Route::post('admin/transaction-type/',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@saveTransactionType']);
 
 Route::get('admin/view-transaction-type/',['middleware' => 'WalletMiddleware','uses' =>'novatree\wallet\WalletController@showTransactionType']);
