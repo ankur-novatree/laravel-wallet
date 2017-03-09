@@ -9,10 +9,15 @@ use App\Http\Controllers\Controller;
 use Novatree\Wallet\AccountModel;
 use Novatree\Wallet\AccountTypeModel;
 use Novatree\Wallet\TransactionTypeModel;
-
+use Session;
 
 class WalletController extends Controller
 {
+    function __construct()
+    {
+        view()->share('admin_login', Session::get('admin_login'));
+    }
+
     /**
      * This method is used show add account type form
      */
@@ -28,7 +33,7 @@ class WalletController extends Controller
             $type_name = $request->type_name;
             $code      = $request->code;
             $status    = $request->status;
-            $account_model = new AccountModel();
+            $account_model = new AccountTypeModel();
             $account_model->create([
                 'name' => $type_name,
                 'code' => $code,

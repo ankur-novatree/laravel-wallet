@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Redirect;
 
 class WalletAuthController extends Controller
 {
+    function __construct()
+    {
+        view()->share('admin_login', Session::get('admin_login'));
+    }
     /**
      * This method is used for show admin login
      */
@@ -47,15 +51,17 @@ class WalletAuthController extends Controller
      * This method is used for show dashboard
      */
     public function dashboard() {
-        echo "This is Dashboard";
+        return view('wallet::dashboard');
     }
     
     /**
      * This method is used for logout
      */
-    public function logot()
+    public function logout()
     {
-        
+        Session::forget('admin_login');
+        Session::forget('admin_user_id');
+        return redirect('admin/login');
     }
     
     /**

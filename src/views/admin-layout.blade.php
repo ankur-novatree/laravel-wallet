@@ -40,36 +40,30 @@
     <div class="lg-menu">
         <div class="lg-menu__item">
             <a class="lg-button" href="buttons">
-                My Account
+                Change Password
             </a>
         </div>
         <div class="lg-menu__item">
-            <a class="lg-button" href="form">
-                My Orders
-            </a>
-        </div>
-        <div class="lg-menu__item">
-            <a class="lg-button" href="table">
+            <a class="lg-button" href="{{ URL::to('admin/logout') }}">
                 Sign out
             </a>
         </div>
     </div>
 </div>
-<header class="lg-navbar--default is-casting-shadow lg-layout__header is-fixed">
+<header class="lg-navbar--default lg-layout__header is-fixed">
     <div class="lg-layout__header-row layout-gutter flex-grow pos-rel">
         <div class="lg-typography--headline">
-            Laravel Wallet Admin
+            <a href="{{ URL::to('admin/dashboard') }}">Laravel Wallet Admin</a>
         </div>
         <a href="javascript:;" class="lg-layout__drawer-button lg-text-white" tabindex="0" role="button" data-toggle="drawer" data-target="#drawer-1" aria-expanded="false">
             <i class="material-icons">menu</i>
         </a>
         <div class="lg-layout-spacer"></div>
-        <button class="lg-button lg-js-button lg-button--icon lg-text-white" data-toggle="menu-bar" data-position="bottom right" data-target="#menu-2">
-            <i class="material-icons">account_circle</i>
-        </button>
-        <button class="lg-button lg-js-button lg-button--icon lg-text-white">
-            <i class="material-icons">more_vert</i>
-        </button>
+        @if($admin_login == TRUE)
+            <button class="lg-button lg-js-button lg-button--icon lg-text-white" data-toggle="menu-bar" data-position="bottom right" data-target="#menu-2">
+                <i class="material-icons">account_circle</i>
+            </button>
+        @endif
     </div>
 </header>
 <aside class="lg-layout__drawer-wrapper" id="drawer-1">
@@ -96,6 +90,29 @@
         </nav>
     </div>
 </aside>
+@if($admin_login == TRUE)
+<div class="sub-header">
+    <div class="lg-layout-container--box lg-layout-container">
+        <div class="drupal-navigation">
+            <ul class="lg-navigation is-narrow  drupal-layout-menu">
+                <li class="first expanded lg-navigation__wrapper"><span class="lg-navigation__link zotezo-highlight nolink">Account</span>
+                    <ul class="lg-navigation  drupal-layout-menu">
+                        <li class="first leaf lg-navigation__wrapper"><a href="{{ URL::to('admin/account-type') }}">Create Account Type</a></li>
+                        <li class="last leaf lg-navigation__wrapper"><a href="{{ URL::to('admin/view-account-type') }}">View Account Type</a></li>
+                    </ul>
+                </li>
+                <li class="last expanded lg-navigation__wrapper"><span class="lg-navigation__link zotezo-highlight nolink">Transaction</span>
+                    <ul class="lg-navigation  drupal-layout-menu">
+                        <li class="first leaf lg-navigation__wrapper"><a href="{{ URL::to('admin/transaction-type') }}">Create Transaction Type</a></li>
+                        <li class="last leaf lg-navigation__wrapper"><a href="{{ URL::to('admin/view-transaction-type') }}">View Transaction Type</a></li>
+                        <li class="last leaf lg-navigation__wrapper"><a href="{{ URL::to('admin/view-transaction') }}">View Transactions</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+@endif
 <div class="lg-layout-padding--section is-first">
     <div class="lg-layout-container lg-layout-container--box">
         @yield('content')
