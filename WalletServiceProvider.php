@@ -14,13 +14,14 @@ class WalletServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    protected  $defer=true;
     protected $middleware = [
         'WalletMiddleware' => 'Novatree\Wallet\Middleware\WalletMiddleware'
     ];
 
     public function boot(Router $router)
     {
-        require __DIR__ . '/Http/routes.php';
+        $this->setupRoutes($this->app->router);
         $this->publishes([
             __DIR__.'/assets' => base_path('public/assets/wallet'),
             __DIR__.'/migrations' => base_path('database/migrations'),
@@ -32,7 +33,13 @@ class WalletServiceProvider extends ServiceProvider
         }
 
     }
-
+    public function setupRoutes(Router $router)
+    {
+        $router->group(['namespace' => 'Novatree\Wallet\Http\Controllers'], function($router)
+        {
+            require __DIR__.'/Http/routes.php';
+        });
+    }
     /**
      * Register the application services.
      *
