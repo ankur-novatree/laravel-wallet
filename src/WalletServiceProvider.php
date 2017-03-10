@@ -14,7 +14,9 @@ class WalletServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        $this->publishes([
+            __DIR__.'/migrations' => base_path('database/migrations'),
+        ]);
     }
 
     /**
