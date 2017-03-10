@@ -11,6 +11,7 @@ use Novatree\Wallet\model\AccountModel;
 use Novatree\Wallet\model\AccountTypeModel;
 use Novatree\Wallet\model\TransactionTypeModel;
 use Novatree\Wallet\model\UserTotalBalance;
+use DB;
 
 class WalletApi {
     /**
@@ -144,6 +145,41 @@ class WalletApi {
             $balance = $user_total[0]['total_balance'];
         }
         return $balance;
+    }
+
+    /**
+     * This method is used for rebuild user total balance
+     */
+    public function rebuildUserTotalBalance($user_id = 0) {
+        $user_total_balance_module = new UserTotalBalance();
+        $users_total = DB::table('account')
+            ->select(DB::raw('sum(amount) as balance,user_id'))
+            ->where(function ($query) use ($user_id){
+                if($user_id != 0) {
+                    $query->where('user_id','=',$user_id);
+                }
+            })->groupBy('user_id')->get();
+        $balance = 0;
+        if(!empty($users_total)) {
+            foreach ($users_total as $item) {
+                $balance = $item->balance;
+                $user_id = $item->user_id;
+                $users_total_balance = $user_total_balance_module->where('user_id','=',$user_id)->get()->toArray();
+                if(!empty($users_total_balance)) {
+                    $users_total_balance_save = $user_total_balance_module->find($users_total_balance[0]['id']);
+                    $users_total_balance_save->total_balance = $balance;
+                    $users_total_balance_save->save();
+                }
+                else {
+                    $user_total_balance_module->create([
+                        'user_id' => $user_id,
+                        'total_balance' => $balance,
+                        'modify_date'  => date('Y-m-d H:i:s')
+                    ]);
+                }
+            }
+        }
+        return TRUE;
     }
 
     public function test()
