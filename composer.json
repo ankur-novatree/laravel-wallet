@@ -1,22 +1,21 @@
 {
     "name": "novatree/wallet",
-    "description": "Wallet management system for laravel",
-    "keywords": ["Wallet","laravel"],
+    "description": "wallet system package",
+    "type": "laravel-wallet",
     "license": "MIT",
     "authors": [
         {
-            "name": "monojit",
-            "email": "monojithalder@hotmail.com"
+            "name": "tejomayonline",
+            "email": "tejomaysaha@outlook.com"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {
-        "php": ">=5.5.9",
-        "illuminate/support": "~5.0"
-    },
     "autoload": {
-        "psr-0": {
-            "Novatree\\Wallet\\": "src/"
+
+        "psr-4": {
+
+            "Novatree\\Wallet\\" : "src"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "require": {}
 }
