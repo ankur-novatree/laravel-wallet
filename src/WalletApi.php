@@ -7,6 +7,11 @@
  */
 namespace Novatree\Wallet;
 use Mockery\CountValidator\Exception;
+use Novatree\Wallet\model\AccountModel;
+use Novatree\Wallet\model\AccountTypeModel;
+use Novatree\Wallet\model\TransactionTypeModel;
+use Novatree\Wallet\model\UserTotalBalance;
+
 class WalletApi {
     /**
      * This method is used for create transaction
