@@ -1,13 +1,23 @@
 {
     "name": "novatree/wallet",
-    "description": "Wallet management system",
+    "description": "Simple Wallet",
     "license": "MIT",
+    "keywords": ["wallet", "laravel"],
     "authors": [
         {
-            "name": "monojit",
+            "name": "Monojit Halder",
             "email": "monojithalder@hotmail.com"
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/support": "~5.0",
+        "illuminate/contracts": "~5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Novatree\\Wallet\\": "src/"
+        }
+    }
 }
