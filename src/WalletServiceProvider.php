@@ -23,7 +23,7 @@ class WalletServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //include __DIR__.'/routes.php';
-        //$this->app->make('Novatree\Wallet\WalletController');
+        include __DIR__.'/routes.php';
+        $this->app->make('Novatree\Wallet\controller\WalletController');
     }
 }
