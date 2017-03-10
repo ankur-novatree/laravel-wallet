@@ -20,12 +20,7 @@ class WalletServiceProvider extends ServiceProvider
 
     public function boot(Router $router)
     {
-        /* $this->publishes([
-           __DIR__.'/views' => base_path('resources/views/novatree/wallet'),
-         ]);
-         $this->publishes([
-           __DIR__.'/migrations' => base_path('database/migrations'),
-         ]);*/
+        require __DIR__ . '/Http/routes.php';
         $this->publishes([
             __DIR__.'/assets' => base_path('public/assets/wallet'),
             __DIR__.'/migrations' => base_path('database/migrations'),
