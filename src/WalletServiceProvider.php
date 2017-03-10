@@ -25,5 +25,9 @@ class WalletServiceProvider extends ServiceProvider
     {
         include __DIR__.'/routes.php';
         $this->app->make('Novatree\Wallet\controller\WalletController');
+        App::bind('walletapi', function()
+        {
+            return new \Novatree\Wallet\WalletApi;
+        });
     }
 }
