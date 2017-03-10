@@ -14,7 +14,7 @@ class WalletServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected  $defer=true;
+    protected  $defer=false;
     protected $middleware = [
         'WalletMiddleware' => 'Novatree\Wallet\Middleware\WalletMiddleware'
     ];
