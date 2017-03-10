@@ -13,7 +13,7 @@
 
         "psr-4": {
 
-            "Novatree\\Wallet\\" : "src"
+            "Novatree\\Wallet\\" : "src/"
         }
     },
     "minimum-stability": "dev",
