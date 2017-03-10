@@ -10,7 +10,7 @@ use Novatree\Wallet\AdminLogin;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
-class WalletAuthController extends Controller
+class WalletController extends Controller
 {
     function __construct()
     {
