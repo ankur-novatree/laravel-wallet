@@ -3,6 +3,7 @@
 namespace Novatree\Wallet;
 
 use Illuminate\Support\ServiceProvider;
+use App;
 
 class WalletServiceProvider extends ServiceProvider
 {
