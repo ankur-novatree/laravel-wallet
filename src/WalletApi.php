@@ -14,10 +14,18 @@ use Novatree\Wallet\model\UserTotalBalance;
 use DB;
 
 class WalletApi {
+
     /**
-     * This method is used for create transaction
-     * Transaction status: 0 => Inactive,1 => active
+     * This method is used for create a transaction
+     * @param $account_type is account type id
+     * @param $transaction_type is transaction type id
+     * @param $amount is transaction amount it could be positive or negative depends on demand
+     * @param $date is Transaction date
+     * @param $user_id is user id from transaction
+     * @param int $transaction_status is transaction status will be 0 => Inactive or 1 => Active
+     * @return array
      */
+
     public function createTransaction($account_type,$transaction_type,$amount,$date,$user_id,$transaction_status = 1) {
         try {
             $account_model = new AccountModel();
@@ -32,14 +40,21 @@ class WalletApi {
             if($transaction_status == 1) {
                 $this->updateUserTotalBalance($user_id, $amount);
             }
-            return array('success');
+            return array('success' => 'Transaction successfully created');
         }
         catch(Exception $e) {
-            return array('failure');
+            return array('error' => 'Something wrong!');
         }
     }
     /**
      * This method is used for get transaction user wise
+     * @param $user_id
+     * @param $transaction_id
+     * @param $transaction_date
+     * @param $account_type
+     * @param $transaction_type
+     * @param $transaction_status
+     * @return
      */
     public function getUserTransaction($user_id,$transaction_id=0,$transaction_date=null,$account_type=null,$transaction_type = null,$transaction_status = null) {
         try {
@@ -74,13 +89,11 @@ class WalletApi {
                 return $data;
             }
             else {
-                $return_string = json_encode(array('failure'));
-                return $return_string;
+                return array('error' => 'Please give a valid user id');
             }
         }
         catch(Exception $e) {
-            $return_string = json_encode(array('failure'));
-            return $return_string;
+            return array('error' => 'Something wrong');
         }
     }
     /**
