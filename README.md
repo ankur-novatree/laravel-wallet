@@ -55,12 +55,12 @@ To get user's transaction for wallet, use getUserTransaction() method
 Wallet::getUserTransaction($user_id,$transaction_id,$transaction_date,$account_type,$transaction_type,$transaction_status);
 ```
 
-To get type of  all account, use getAccountTypes() method. To get all active account $status parameter should be 1, and 0 in case of inactive. 
+To get type of  all account, use getAccountTypes() method. Here $status is a optional parameter. To get all active account $status parameter should be 1, and 0 in case of inactive. 
 ```php
 Wallet::getAccountTypes($status);
 ```
 
-To get type of all transactions, use getTransactionTypes() method. To get all active transactions $status parameter should be 1, and 0 in case of inactive. 
+To get type of all transactions, use getTransactionTypes() method. Here $status is a optional parameter. To get all active transactions $status parameter should be 1, and 0 in case of inactive. 
 ```php
 Wallet::getTransactionTypes($status);
 ```
