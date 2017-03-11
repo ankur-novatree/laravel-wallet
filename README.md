@@ -1,4 +1,4 @@
-## Laravel/wallet
+## Laravel Wallet
 
 A simple wallet feature implementation for Laravel.
 
@@ -18,10 +18,10 @@ Add a new line to the `providers` array:
 
 And optionally add a new line to the `aliases` array:
 
-	'Wallet' => Novatree\Wallet\Facades\WalletApiFacades::class
+	'Wallet' => Novatree\Wallet\facades\WalletApiFacades::class
 
 Now you're ready to start using the wallet feature in your application.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+The Laravel Wallet is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
