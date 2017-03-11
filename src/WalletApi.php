@@ -56,41 +56,42 @@ class WalletApi {
      * @param $transaction_status
      * @return
      */
-    public function getUserTransaction($user_id,$transaction_id=0,$transaction_date=null,$account_type=null,$transaction_type = null,$transaction_status = null) {
+    public function getUserTransaction($user_id=0,$transaction_id=0,$transaction_date=null,$account_type=null,$transaction_type = null,$transaction_status = null) {
         try {
-            if (!$user_id) {
-                $account_model = new AccountModel();
-                $data = array();
-                $data = $account_model->where('user_id', '=', $user_id)
-                    ->where(function ($query) use ($transaction_id) {
-                        return $query->where('id','=',$transaction_id);
-                    })
-                    ->where(function ($query) use ($transaction_date) {
-                        if($transaction_date != null) {
-                            return $query->where('transaction_date','=',$transaction_date);
-                        }
-                    })
-                    ->where(function ($query) use ($transaction_type) {
-                        if($transaction_type != null) {
-                            return $query->where('transaction_type','=',$transaction_type);
-                        }
-                    })
-                    ->where(function ($query) use ($account_type) {
-                        if($account_type != null) {
-                            return $query->where('account_type','=',$account_type);
-                        }
-                    })
-                    ->where(function ($query) use ($transaction_status) {
-                        if($transaction_status != null) {
-                            return $query->where('transaction_status','=',$transaction_status);
-                        }
-                    })
-                    ->get()->toArray();
-                return $data;
-            }
-            else {
-                return array('error' => 'Please give a valid user id');
-            }
+            $account_model = new AccountModel();
+            $data = array();
+            $data = $account_model->where(function ($query) use ($user_id) {
+                if($user_id != 0) {
+                    return $query->where('user_id','=',$user_id);
+                }
+            })
+                ->where(function ($query) use ($transaction_id) {
+                    if($transaction_id != 0) {
+                        return $query->where('id', '=', $transaction_id);
+                    }
+                })
+                ->where(function ($query) use ($transaction_date) {
+                    if($transaction_date != null) {
+                        return $query->where('transaction_date','=',$transaction_date);
+                    }
+                })
+                ->where(function ($query) use ($transaction_type) {
+                    if($transaction_type != null) {
+                        return $query->where('transaction_type','=',$transaction_type);
+                    }
+                })
+                ->where(function ($query) use ($account_type) {
+                    if($account_type != null) {
+                        return $query->where('account_type','=',$account_type);
+                    }
+                })
+                ->where(function ($query) use ($transaction_status) {
+                    if($transaction_status != null) {
+                        return $query->where('transaction_status','=',$transaction_status);
+                    }
+                })
+                ->get()->toArray();
+            return $data;
         }
         catch(Exception $e) {
             return array('error' => 'Something wrong');
