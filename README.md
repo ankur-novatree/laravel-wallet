@@ -1,4 +1,4 @@
-## Novatree/wallet
+## Laravel/wallet
 
 A simple wallet feature implementation for Laravel.
 
