@@ -16,8 +16,9 @@ use DB;
 class WalletApi {
     /**
      * This method is used for create transaction
+     * Transaction status: 0 => Inactive,1 => active
      */
-    public function createTransaction($account_type,$transaction_type,$amount,$date,$user_id) {
+    public function createTransaction($account_type,$transaction_type,$amount,$date,$user_id,$transaction_status = 1) {
         try {
             $account_model = new AccountModel();
             $account_model->create([
@@ -25,9 +26,12 @@ class WalletApi {
                 'amount' => $amount,
                 'account_type' => $account_type,
                 'transaction_type' => $transaction_type,
-                'transaction_date' => $date
+                'transaction_date' => $date,
+                'transaction_status' => $transaction_status
             ]);
-            $this->updateUserTotalBalance($user_id,$amount);
+            if($transaction_status == 1) {
+                $this->updateUserTotalBalance($user_id, $amount);
+            }
             return array('success');
         }
         catch(Exception $e) {
@@ -37,32 +41,35 @@ class WalletApi {
     /**
      * This method is used for get transaction user wise
      */
-    public function getUserTransaction($user_id,$transaction_id=0,$transaction_date=null,$account_type=null,$transaction_type = null) {
+    public function getUserTransaction($user_id,$transaction_id=0,$transaction_date=null,$account_type=null,$transaction_type = null,$transaction_status = null) {
         try {
             if (!$user_id) {
                 $account_model = new AccountModel();
-                $transaction_id_where = '';
-                if ($transaction_id != 0) {
-                    $transaction_id_where .= "'id','='," . $transaction_id;
-                }
-                $transaction_date_where = '';
-                if ($transaction_date != NULL) {
-                    $transaction_date_where .= "'transaction_date','='," . $transaction_date;
-                }
-                $transaction_type_where = '';
-                if ($transaction_type != NULL) {
-                    $transaction_type_where .= "'transaction_type','='," . $transaction_type;
-                }
-                $account_type_where = '';
-                if ($account_type != NULL) {
-                    $account_type_where .= "'account_type','='," . $account_type;
-                }
                 $data = array();
                 $data = $account_model->where('user_id', '=', $user_id)
-                    ->where($transaction_id_where)
-                    ->where($transaction_date_where)
-                    ->where($transaction_type_where)
-                    ->where($account_type_where)
+                    ->where(function ($query) use ($transaction_id) {
+                        return $query->where('id','=',$transaction_id);
+                    })
+                    ->where(function ($query) use ($transaction_date) {
+                        if($transaction_date != null) {
+                            return $query->where('transaction_date','=',$transaction_date);
+                        }
+                    })
+                    ->where(function ($query) use ($transaction_type) {
+                        if($transaction_type != null) {
+                            return $query->where('transaction_type','=',$transaction_type);
+                        }
+                    })
+                    ->where(function ($query) use ($account_type) {
+                        if($account_type != null) {
+                            return $query->where('account_type','=',$account_type);
+                        }
+                    })
+                    ->where(function ($query) use ($transaction_status) {
+                        if($transaction_status != null) {
+                            return $query->where('transaction_status','=',$transaction_status);
+                        }
+                    })
                     ->get()->toArray();
                 return $data;
             }
@@ -158,7 +165,9 @@ class WalletApi {
                 if($user_id != 0) {
                     $query->where('user_id','=',$user_id);
                 }
-            })->groupBy('user_id')->get();
+            })
+            ->where('transaction_type','=',1)
+            ->groupBy('user_id')->get();
         $balance = 0;
         if(!empty($users_total)) {
             foreach ($users_total as $item) {
@@ -180,6 +189,75 @@ class WalletApi {
             }
         }
         return TRUE;
+    }
+
+    /**
+     * This method is used for delete a transaction by transaction id
+     * @param $transaction_id
+     * @return array
+     */
+    public function deleteTransaction($transaction_id)
+    {
+        if($transaction_id == '' || $transaction_id <= 0) {
+            return array('error' => 'Please enter a valid transaction id');
+        }
+        else {
+            $account_model =new AccountModel();
+            $transaction = $account_model->where('id','=',$transaction_id)->get()->toArray();
+            $transaction = array_shift($transaction);
+            $delete_transaction = $account_model->find($transaction_id);
+            $delete_transaction->delete();
+            if($transaction['transaction_status'] == 1) {
+                $user_total_model = new UserTotalBalance();
+                $user_total = $user_total_model->find($transaction['user_id']);
+                if(!empty($user_total)) {
+                    $user_total->total_balance -= $transaction['amount'];
+                    $user_total->save();
+                }
+            }
+            return array('success'=>'Transaction successfully deleted');
+        }
+
+    }
+
+    /**
+     * This method is used for Active or Inactive a transaction by transaction id
+     * @param $transaction_id
+     * @param $transaction_status
+     * @return array
+     */
+
+    public function activeInactiveTransaction($transaction_id,$transaction_status) {
+        if($transaction_id == '' || $transaction_id <= 0) {
+            return array('error' => 'Please enter a valid transaction id');
+        }
+        else if($transaction_status == '') {
+            return array('error' => 'Please enter a valid status');
+        }
+        else {
+            $account_model =new AccountModel();
+            $transaction = $account_model->where('id','=',$transaction_id)->get()->toArray();
+            $transaction = array_shift($transaction);
+            $save_transaction = $account_model->find($transaction_id);
+            $save_transaction->transaction_status = $transaction_status;
+            $save_transaction->save();
+            $user_total_model = new UserTotalBalance();
+            if($transaction_status == 1) {
+                $user_total = $user_total_model->find($transaction['user_id']);
+                if(!empty($user_total)) {
+                    $user_total->total_balance += $transaction['amount'];
+                    $user_total->save();
+                }
+            }
+            else {
+                $user_total = $user_total_model->find($transaction['user_id']);
+                if(!empty($user_total)) {
+                    $user_total->total_balance -= $transaction['amount'];
+                    $user_total->save();
+                }
+            }
+            return array('success'=>'Transaction successfully deleted');
+        }
     }
 
     public function test()

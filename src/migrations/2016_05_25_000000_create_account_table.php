@@ -19,6 +19,7 @@ class CreateAccountTable extends Migration
             $table->string('account_type');
             $table->string('transaction_type');
             $table->dateTime('transaction_date');
+            $table->integer('transaction_status');
         });
     }
 
