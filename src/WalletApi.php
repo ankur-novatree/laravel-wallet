@@ -274,6 +274,32 @@ class WalletApi {
         }
     }
 
+    /**
+     * This method is used for get account types
+     * @param null $status
+     */
+    public function getAccountTypes($status = null) {
+        $account_type_model =new AccountTypeModel();
+        $account_type = $account_type_model->where(function ($query) use ($status) {
+            if($status != null)
+                return $query->where('status','=',$status);
+        })->get()->toArray();
+        return $account_type;
+    }
+
+    /**
+     * This method is used for get account types
+     * @param null $status
+     */
+    public function getTransactionTypes($status = null) {
+        $transaction_type_model =new TransactionTypeModel();
+        $transaction_type = $transaction_type_model->where(function ($query) use ($status) {
+            if($status != null)
+                return $query->where('status','=',$status);
+        })->get()->toArray();
+        return $transaction_type;
+    }
+
     public function test()
     {
         return 'This is test method';
