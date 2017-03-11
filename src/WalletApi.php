@@ -104,7 +104,7 @@ class WalletApi {
      * @return array
      * This method is used for create account type
      */
-    public function CreateAccountType($name,$code,$status) {
+    public function createAccountType($name,$code,$status) {
         try {
             $account_type_model = new AccountTypeModel();
             $account_type_model->create([
@@ -124,7 +124,7 @@ class WalletApi {
      * @return array
      * This method is used for create transaction type
      */
-    public function CreateTransactionType($code,$status) {
+    public function createTransactionType($code,$status) {
         try {
             $transaction_model = new TransactionTypeModel();
             $transaction_model->create([
